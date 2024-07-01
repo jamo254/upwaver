@@ -21,6 +21,7 @@
   </style>
 
   <body>
+        <%= render "shared/navbar" %>
     <%= yield %>
       <p class="notice">
         <%= notice %>
@@ -28,7 +29,7 @@
       <p class="alert">
         <%= alert %>
       </p>
-      <%= render "shared/navbar" %>
+  
   </body>
 
 </html>

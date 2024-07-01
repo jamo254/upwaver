@@ -1,50 +1,150 @@
-<nav class="navbar is-success is-fixed-top ">
-    <!-- Brand -->
-    <div class="navbar-brand">
-        <a class="navbar-item" href="/">
-            <h1 class="title is-4  has-text-white"><b>Upwave</b></h1>
-        </a>
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-        </a>
-    </div>
+<nav id="" class="navbar is-transparent no-shadow" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="#">
+                <div class="title">Upwave</div>
+            </a>
 
-    <!-- Second part of navbar to the right -->
-    <div class="navbar-end">
-       <div class="navbar-item">
-           <!-- Login and sign up buttons -->
-           <div class="buttons">
-               <a href="" class="button is-primary">Sign Up</a> 
-               <a href="" class="button is-light">Login</a>
-           </div>
-       </div>
+            <a class="navbar-item is-hidden-desktop is-hidden-tablet">
+                <div id="menu-icon-wrapper" class="menu-icon-wrapper" style="visibility: visible;">
+                    <svg width="1000px" height="1000px">
+                        <path class="path1"
+                            d="M 300 400 L 700 400 C 900 400 900 750 600 850 A 400 400 0 0 1 200 200 L 800 800">
+                        </path>
+                        <path class="path2" d="M 300 500 L 700 500"></path>
+                        <path class="path3"
+                            d="M 700 600 L 300 600 C 100 600 100 200 400 150 A 400 380 0 1 1 200 800 L 800 200">
+                        </path>
+                    </svg>
+                    <button id="menu-icon-trigger" class="menu-icon-trigger"></button>
+                </div>
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbar-menu" class="navbar-menu is-static">
+            <div class="navbar-start">
+                <a class="navbar-item is-hidden-mobile">
+
+                </a>
+                <!-- Search box -->
+                <div class="navbar-item">
+                    <div class="field has-addons">
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Find a repository">
+                        </div>
+                        <div class="control">
+                            <a class="button is-info">
+                                Search
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navbar-end">
+                <a href="/" class="navbar-item is-secondary">
+                    Home
+                </a>
+                <a href="services" class="navbar-item is-secondary">
+                    Services
+                </a>
+                <a href="faq" class="navbar-item is-secondary">
+                    Faq
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        Dropdown
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">
+                            Dropdown item
+                        </a>
+                        <a class="navbar-item">
+                            Dropdown item
+                        </a>
+                        <a class="navbar-item">
+                            Dropdown item
+                        </a>
+                    </div>
+                </div>
+                <a href="#" class="navbar-item is-secondary modal-trigger" data-modal="auth-modal">
+
+                </a>
+
+                <div class="navbar-end">
+                    <!-- <a href="" class="navbar-item">Post Promo</a> -->
+                     <% if (!user_signed_in?) %>
+                                <div class="navbar-item">
+                                    <div class="buttons">
+                                        <%= link_to "Sign Up" , new_user_registration_path, class: "button is-primary"%>
+                                        <%= link_to "Login" , new_user_session_url, class: "button is-light" %>
+                                                <!--          <a class="button is-primary"><strong>Sign up</strong></a>-->
+                                                <!--          <a class="button is-light">Log in</a>-->
+                                    </div>
+                                </div>
+                                <% else %>
+                                    <div class="navbar-item has-dropdown is-hoverable">
+                                        <a href="" class="navbar-link">
+                                            <figure class="image is-24x24 m-r-5 avatar <%= current_user.status ? "
+                                                online" : "offline" %>">
+                                                <%= image_tag avatar_url(current_user), class: "is-rounded" %>
+                                            </figure>
+                                            <%= current_user.full_name %>
+                                        </a>
+                                        <div class="navbar-dropdown ">
+                                            <%= link_to "Profile" , edit_user_registration_path, class: "navbar-item" %>
+                                            <%= link_to "Dashboard", dashboard_path, class: "navbar-item" %>
+                                                    <hr class="navbar-divider">
+                                            <%= button_to "Log out" ,destroy_user_session_path, method: :delete,
+                                                        class: "navbar-item" %>
+                                        </div>
+                                    </div>
+                                <% end%>
+                </div>
+            </div>
+        </div>
     </div>
-</nav>
+</nav> 
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    // Get the navbar elements
+        const navbar = document.getElementById('navbar-menu');
+        const navbarBurger = document.querySelector('.navbar-burger');
+        const navbarMenuIcon = document.getElementById('menu-icon-trigger');
 
-        // Get all "navbar-burger" elements
-        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+        // Add event listeners
+        navbarBurger.addEventListener('click', toggleNavbar);
+        navbarMenuIcon.addEventListener('click', toggleNavbar);
 
-        // Add a click event on each of them
-        $navbarBurgers.forEach(el => {
-            el.addEventListener('click', () => {
+        // Function to toggle the navbar
+        function toggleNavbar() {
+            navbar.classList.toggle('is-active');
+            navbarBurger.classList.toggle('is-active');
+            navbarMenuIcon.classList.toggle('is-active');
+        }
 
-                // Get the target from the "data-target" attribute
-                const target = el.dataset.target;
-                const $target = document.getElementById(target);
+        // Add responsive behavior
+        function responsiveNavbar() {
+            const screenWidth = window.innerWidth;
+            if (screenWidth <= 1024) { // Adjust the breakpoint as needed
+                navbar.classList.add('is-hidden-desktop');
+                navbar.classList.add('is-hidden-tablet');
+            } else {
+                navbar.classList.remove('is-hidden-desktop');
+                navbar.classList.remove('is-hidden-tablet');
+            }
+        }
 
-                // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-                el.classList.toggle('is-active');
-                $target.classList.toggle('is-active');
+        // Call the responsive function on window resize
+        window.addEventListener('resize', responsiveNavbar);
 
-                // reload the current page
-
-            });
-        });
-
-    });
+        // Call the responsive function on page load
+        responsiveNavbar();
 </script>
