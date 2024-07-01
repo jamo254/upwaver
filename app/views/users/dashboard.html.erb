@@ -1,3 +1,7 @@
+<% content_for :head do %>
+    <meta name="turbo-visit-control" content="reload">
+    <meta name="turbo-cache-control" content="no-cache">
+<% end %>
 <section class="section">
     <div class="container columns">
         <!-- LEFT SIDE -->
@@ -28,9 +32,68 @@
                     <% end %>
                 </div>
                 <hr class="h-10">
+ 
+                <!-- Member -->
+                <article>
+                    <div class="media-content">Member Since</div>
+                    <div class="media-right">
+                        <strong>
+                            <%= current_user.created_at.strftime('%b %Y')%>
+                            
+                        </strong>
+                    </div>
+                </article>
+                <hr class="h-10">
+                <!-- From Location -->
+                 <article>
+                    <div class="media">
+                        <div class="media-content">Location</div>
+                        <div class="media-right">
+                            <strong>
+                                <%= current_user.from %>
+                            </strong><i class="toggle far fa-edit" aria-controls="user-from"></i>
+                        </div>
+                    </div>
+                    <!-- Popup form for user location -->
+                    <div class="content">
+                        <%= form_for :user, url: users_edit_url(@user), action: :update, method: :post, html: {id: 'user-from' ,
+                            class: 'is-hidden' } do |f| %>
+                            <div class="field">
+                                <%= f.text_field :from, autofocus: true, autocomplete: 'form' , class: 'input' %>
+                            </div>
+                            <a class="toggle button is-light" aria-controls="user-from">Cancel</a>
+                            <%= f.submit "Save" , class: "button is-danger" %>
+                        <% end %>
+                    </div>
+                </article>
+                <hr class="h-10">
+               
+                <!-- Online Status --> 
 
                 </div>
             </div>
         </div>
     </div>
-</section>
+</section> 
+
+
+<script>
+//    Allows the form to be submitted naturally
+    document.addEventListener('DOMContentLoaded', function () {
+        function toggleFormVisibility(formId) {
+            const form = document.getElementById(formId);
+            form.classList.toggle('is-hidden');
+        }
+
+   // Delegated event handling for toggle icons
+   document.addEventListener('click', function (event) {
+      const toggleIcon = event.target.closest('.toggle');
+     if (toggleIcon) {
+        const formId = toggleIcon.getAttribute('aria-controls');
+      toggleFormVisibility(formId);
+    }
+});
+});
+ 
+
+</script>

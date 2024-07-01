@@ -2,7 +2,7 @@ module ApplicationHelper
   #helper function for attaching image
   def avatar_url(user)
      if user.avatar.attached?
-      url_for.avatar(user.avatar)
+      url_for(user.avatar)
      elsif user.image?
         user.image
      else
