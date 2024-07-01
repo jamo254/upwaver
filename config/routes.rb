@@ -12,4 +12,8 @@ Rails.application.routes.draw do
   # Auth routes
    devise_for :users, path: '', path_names: {sign_up: 'register', sign_in: 'login', edit: 'profile', sign_out: 'logout'}
    get '/dashboard',  to: 'users#dashboard'
+   get '/users/:id', to: 'users#show', as: 'users'
+
+   
+   post '/users/edit', to: 'users#update'
 end
