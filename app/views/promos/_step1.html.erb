@@ -1,0 +1,24 @@
+<% content_for :head do %>
+    <meta name="turbo-refresh-method" content="morph">
+    <meta name="turbo-visit-control" content="reload">
+<% end %>
+<div class="step-content <%= 'is-active' if @step == 1 %>">
+    <div class="field">
+        <label class="label">Promo Title</label>
+        <%= f.text_area :title, autocomplete: "title" , class: "textarea" %>
+    </div>
+    
+    <div>
+        <!-- Map over the categories  -->
+        <label class="label">Category</label>
+    
+        <%= f.select(:category_id, options_for_select(@categories.map{ |c| [c.name, c.id] }, selected: @promo.category_id))%>
+    </div>
+
+   <div class="field">
+       <label class="checkbox">
+           <%= f.check_box :has_single_pricing, class: "checkbox", onChange: "this.form.submit();" %> Has Single Price
+       </label>
+   </div>
+</div>
+

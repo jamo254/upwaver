@@ -1,0 +1,28 @@
+<% content_for :head do %>
+    <meta name="turbo-refresh-method" content="morph">
+    <meta name="turbo-visit-control" content="reload">
+<% end %>
+
+<div class="step-content has-text-centered <%= 'is-active' if @step == 5 %>">
+     <div>
+         <%= hidden_field_tag 'active', 'true' if @step == 5 %>
+         <strong class="is-size-2">Almost done...</strong>
+         <p>Are are ready to publish this Promo and attract some buyers?</p>
+     </div>
+</div>
+
+<div class="field is-grouped is-grouped-centered m-t-25">
+    <p class="control <%= 'is-hidden' if @step <= 1 %>">
+        <%= link_to 'Back', edit_promo_path(@promo, step: @step -1), class: "button is-light" %>
+    </p>
+
+    <p class="control">
+        <% if @step != 5 %>
+           <%= f.submit "Save & Continue", class: "button is-primary" %>
+        <% else %>
+            <%= link_to 'Publish', promo_path(@promo.id, promo: {active: true}, step: @step), 
+            method: :put, data: {confirm: "Do you want to publish this promo?"},
+            class: "button is-danger"  %> 
+        <% end %>
+    </p>
+</div>

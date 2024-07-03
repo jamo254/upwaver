@@ -1,0 +1,25 @@
+<style>
+  #category{
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x:auto;
+ 
+  }
+
+  .navbar-item {
+  /* Adjust width or other styles as needed */
+  margin-right: 10px; /* Example margin */
+  }
+</style>
+<nav class="navbar has-shadow" id="category">
+ <div class="container">
+     <div class="navbar">
+         <% @categories.each do |item| %>
+           <%#= link_to "#{item.name}", search_path(category: item.id), class: "navbar-item" %>
+         <% end %>
+         
+     </div>
+ </div>
+</nav>
+
+

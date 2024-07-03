@@ -1,0 +1,12 @@
+<% content_for :head do %>
+    <meta name="turbo-refresh-method" content="morph">
+    <meta name="turbo-visit-control" content="reload">
+<% end %>
+
+<div class="step-content <%= 'is-active' if @step == 3 %>">
+    <div class="field">
+        <label for="promo_description" class="label">Description</label>
+        <%= f.rich_text_area :description, rows: 50, cols: 50 %>
+    </div>
+</div>
+

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'promos/new'
 
   # Defines the root path route ("/")
   root "pages#home"
@@ -14,6 +15,15 @@ Rails.application.routes.draw do
    get '/dashboard',  to: 'users#dashboard'
    get '/users/:id', to: 'users#show', as: 'users'
 
-   
+
    post '/users/edit', to: 'users#update'
+
+  # Generates CRUD functions Routes
+  #Promos
+  resources :promos do
+    member do
+       get :delete_photo 
+       post :upload_photo
+    end
+  end
 end

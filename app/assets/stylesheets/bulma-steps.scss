@@ -1,0 +1,591 @@
+$color_1: #fff;
+$color_2: #00d1b2;
+$color_3: #0a0a0a;
+$color_4: #f5f5f5;
+$color_5: #363636;
+$color_6: #3273dc;
+$color_7: #209cee;
+$color_8: #23d160;
+$color_9: #ffdd57;
+$color_10: rgba(0,0,0,.7);
+$color_11: #ff3860;
+$background-color_1: #fff;
+$background-color_2: #00d1b2;
+$background-color_3: #0a0a0a;
+$background-color_4: #f5f5f5;
+$background-color_5: #363636;
+$background-color_6: #3273dc;
+$background-color_7: #209cee;
+$background-color_8: #23d160;
+$background-color_9: #ffdd57;
+$background-color_10: #ff3860;
+$border-color_1: #00d1b2;
+$border-color_2: #fff;
+$border-color_3: #0a0a0a;
+$border-color_4: #f5f5f5;
+$border-color_5: #363636;
+$border-color_6: #3273dc;
+$border-color_7: #209cee;
+$border-color_8: #23d160;
+$border-color_9: #ffdd57;
+$border-color_10: #ff3860;
+
+@-webkit-keyframes spinAround {
+	from {
+		-webkit-transform: rotate(0);
+		transform: rotate(0);
+	}
+	to {
+		-webkit-transform: rotate(359deg);
+		transform: rotate(359deg);
+	}
+}
+@keyframes spinAround {
+	from {
+		-webkit-transform: rotate(0);
+		transform: rotate(0);
+	}
+	to {
+		-webkit-transform: rotate(359deg);
+		transform: rotate(359deg);
+	}
+}
+.steps {
+	&:not(:last-child) {
+		margin-bottom: 1.5rem;
+	}
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	font-size: 1rem;
+	min-height: 2rem;
+	.step-item {
+		margin-top: 0;
+		position: relative;
+		-webkit-box-flex: 1;
+		-ms-flex-positive: 1;
+		flex-grow: 1;
+		-ms-flex-preferred-size: 0;
+		flex-basis: 0;
+		&:not(:first-child) {
+			-ms-flex-preferred-size: 1em;
+			flex-basis: 1em;
+			-webkit-box-flex: 1;
+			-ms-flex-positive: 1;
+			flex-grow: 1;
+			-ms-flex-negative: 1;
+			flex-shrink: 1;
+			&::before {
+				content: " ";
+				display: block;
+				position: absolute;
+				height: .2em;
+				width: 100%;
+				bottom: 0;
+				left: -50%;
+				top: 1rem;
+			}
+		}
+		&::before {
+			background: -webkit-gradient(linear,right top,left top,color-stop(50%,#dbdbdb),color-stop(50%,#00d1b2));
+			background: linear-gradient(to left,#dbdbdb 50%,#00d1b2 50%);
+			background-size: 200% 100%;
+			background-position: right bottom;
+			.step-marker {
+				color: $color_1;
+			}
+		}
+		.step-marker {
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			border-radius: 50%;
+			font-weight: 700;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			background: #b5b5b5;
+			color: $color_1;
+			border: .2em solid #fff;
+			z-index: 1;
+			height: 2rem;
+			width: 2rem;
+			position: absolute;
+			left: calc(50% - 1rem);
+			.icon {
+				* {
+					font-size: 1rem;
+				}
+			}
+		}
+		.step-details {
+			text-align: center;
+			margin-top: 2rem;
+			margin-left: .5em;
+			margin-right: .5em;
+			padding-top: .2em;
+			.step-title {
+				font-size: 1.2rem;
+				font-weight: 600;
+			}
+		}
+	}
+	.step-item.is-active {
+		&::before {
+			background-position: left bottom;
+		}
+		.step-marker {
+			background-color: $background-color_1;
+			border-color: $border-color_1;
+			color: $color_2;
+		}
+	}
+	.step-item.is-completed {
+		&::before {
+			background-position: left bottom;
+		}
+		.step-marker {
+			color: $color_1;
+			background-color: $background-color_2;
+		}
+	}
+	.step-item.is-white {
+		&::before {
+			background: -webkit-gradient(linear,right top,left top,color-stop(50%,#dbdbdb),color-stop(50%,#fff));
+			background: linear-gradient(to left,#dbdbdb 50%,#fff 50%);
+			background-size: 200% 100%;
+			background-position: right bottom;
+		}
+	}
+	.step-item.is-white.is-active {
+		&::before {
+			background-position: left bottom;
+		}
+		.step-marker {
+			background-color: $background-color_1;
+			border-color: $border-color_2;
+			color: $color_1;
+		}
+	}
+	.step-item.is-white.is-completed {
+		&::before {
+			background-position: left bottom;
+		}
+		.step-marker {
+			color: $color_3;
+			background-color: $background-color_1;
+		}
+	}
+	.step-item.is-black {
+		&::before {
+			background: -webkit-gradient(linear,right top,left top,color-stop(50%,#dbdbdb),color-stop(50%,#0a0a0a));
+			background: linear-gradient(to left,#dbdbdb 50%,#0a0a0a 50%);
+			background-size: 200% 100%;
+			background-position: right bottom;
+		}
+	}
+	.step-item.is-black.is-active {
+		&::before {
+			background-position: left bottom;
+		}
+		.step-marker {
+			background-color: $background-color_1;
+			border-color: $border-color_3;
+			color: $color_3;
+		}
+	}
+	.step-item.is-black.is-completed {
+		&::before {
+			background-position: left bottom;
+		}
+		.step-marker {
+			color: $color_1;
+			background-color: $background-color_3;
+		}
+	}
+	.step-item.is-light {
+		&::before {
+			background: -webkit-gradient(linear,right top,left top,color-stop(50%,#dbdbdb),color-stop(50%,#f5f5f5));
+			background: linear-gradient(to left,#dbdbdb 50%,#f5f5f5 50%);
+			background-size: 200% 100%;
+			background-position: right bottom;
+		}
+	}
+	.step-item.is-light.is-active {
+		&::before {
+			background-position: left bottom;
+		}
+		.step-marker {
+			background-color: $background-color_1;
+			border-color: $border-color_4;
+			color: $color_4;
+		}
+	}
+	.step-item.is-light.is-completed {
+		&::before {
+			background-position: left bottom;
+		}
+		.step-marker {
+			color: $color_5;
+			background-color: $background-color_4;
+		}
+	}
+	.step-item.is-dark {
+		&::before {
+			background: -webkit-gradient(linear,right top,left top,color-stop(50%,#dbdbdb),color-stop(50%,#363636));
+			background: linear-gradient(to left,#dbdbdb 50%,#363636 50%);
+			background-size: 200% 100%;
+			background-position: right bottom;
+		}
+	}
+	.step-item.is-dark.is-active {
+		&::before {
+			background-position: left bottom;
+		}
+		.step-marker {
+			background-color: $background-color_1;
+			border-color: $border-color_5;
+			color: $color_5;
+		}
+	}
+	.step-item.is-dark.is-completed {
+		&::before {
+			background-position: left bottom;
+		}
+		.step-marker {
+			color: $color_4;
+			background-color: $background-color_5;
+		}
+	}
+	.step-item.is-primary {
+		&::before {
+			background: -webkit-gradient(linear,right top,left top,color-stop(50%,#dbdbdb),color-stop(50%,#00d1b2));
+			background: linear-gradient(to left,#dbdbdb 50%,#00d1b2 50%);
+			background-size: 200% 100%;
+			background-position: right bottom;
+		}
+	}
+	.step-item.is-primary.is-active {
+		&::before {
+			background-position: left bottom;
+		}
+		.step-marker {
+			background-color: $background-color_1;
+			border-color: $border-color_1;
+			color: $color_2;
+		}
+	}
+	.step-item.is-primary.is-completed {
+		&::before {
+			background-position: left bottom;
+		}
+		.step-marker {
+			color: $color_1;
+			background-color: $background-color_2;
+		}
+	}
+	.step-item.is-link {
+		&::before {
+			background: -webkit-gradient(linear,right top,left top,color-stop(50%,#dbdbdb),color-stop(50%,#3273dc));
+			background: linear-gradient(to left,#dbdbdb 50%,#3273dc 50%);
+			background-size: 200% 100%;
+			background-position: right bottom;
+		}
+	}
+	.step-item.is-link.is-active {
+		&::before {
+			background-position: left bottom;
+		}
+		.step-marker {
+			background-color: $background-color_1;
+			border-color: $border-color_6;
+			color: $color_6;
+		}
+	}
+	.step-item.is-link.is-completed {
+		&::before {
+			background-position: left bottom;
+		}
+		.step-marker {
+			color: $color_1;
+			background-color: $background-color_6;
+		}
+	}
+	.step-item.is-info {
+		&::before {
+			background: -webkit-gradient(linear,right top,left top,color-stop(50%,#dbdbdb),color-stop(50%,#209cee));
+			background: linear-gradient(to left,#dbdbdb 50%,#209cee 50%);
+			background-size: 200% 100%;
+			background-position: right bottom;
+		}
+	}
+	.step-item.is-info.is-active {
+		&::before {
+			background-position: left bottom;
+		}
+		.step-marker {
+			background-color: $background-color_1;
+			border-color: $border-color_7;
+			color: $color_7;
+		}
+	}
+	.step-item.is-info.is-completed {
+		&::before {
+			background-position: left bottom;
+		}
+		.step-marker {
+			color: $color_1;
+			background-color: $background-color_7;
+		}
+	}
+	.step-item.is-success {
+		&::before {
+			background: -webkit-gradient(linear,right top,left top,color-stop(50%,#dbdbdb),color-stop(50%,#23d160));
+			background: linear-gradient(to left,#dbdbdb 50%,#23d160 50%);
+			background-size: 200% 100%;
+			background-position: right bottom;
+		}
+	}
+	.step-item.is-success.is-active {
+		&::before {
+			background-position: left bottom;
+		}
+		.step-marker {
+			background-color: $background-color_1;
+			border-color: $border-color_8;
+			color: $color_8;
+		}
+	}
+	.step-item.is-success.is-completed {
+		&::before {
+			background-position: left bottom;
+		}
+		.step-marker {
+			color: $color_1;
+			background-color: $background-color_8;
+		}
+	}
+	.step-item.is-warning {
+		&::before {
+			background: -webkit-gradient(linear,right top,left top,color-stop(50%,#dbdbdb),color-stop(50%,#ffdd57));
+			background: linear-gradient(to left,#dbdbdb 50%,#ffdd57 50%);
+			background-size: 200% 100%;
+			background-position: right bottom;
+		}
+	}
+	.step-item.is-warning.is-active {
+		&::before {
+			background-position: left bottom;
+		}
+		.step-marker {
+			background-color: $background-color_1;
+			border-color: $border-color_9;
+			color: $color_9;
+		}
+	}
+	.step-item.is-warning.is-completed {
+		&::before {
+			background-position: left bottom;
+		}
+		.step-marker {
+			color: $color_10;
+			background-color: $background-color_9;
+		}
+	}
+	.step-item.is-danger {
+		&::before {
+			background: -webkit-gradient(linear,right top,left top,color-stop(50%,#dbdbdb),color-stop(50%,#ff3860));
+			background: linear-gradient(to left,#dbdbdb 50%,#ff3860 50%);
+			background-size: 200% 100%;
+			background-position: right bottom;
+		}
+	}
+	.step-item.is-danger.is-active {
+		&::before {
+			background-position: left bottom;
+		}
+		.step-marker {
+			background-color: $background-color_1;
+			border-color: $border-color_10;
+			color: $color_11;
+		}
+	}
+	.step-item.is-danger.is-completed {
+		&::before {
+			background-position: left bottom;
+		}
+		.step-marker {
+			color: $color_1;
+			background-color: $background-color_10;
+		}
+	}
+	.steps-content {
+		-webkit-box-align: stretch;
+		-ms-flex-align: stretch;
+		align-items: stretch;
+		-ms-flex-preferred-size: 100%;
+		flex-basis: 100%;
+		margin: 2rem 0;
+		.step-content {
+			display: none;
+		}
+		.step-content.is-active {
+			display: block;
+		}
+	}
+	.steps-actions {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: stretch;
+		-ms-flex-align: stretch;
+		align-items: stretch;
+		-ms-flex-preferred-size: 100%;
+		flex-basis: 100%;
+		.steps-action {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-ms-flex-preferred-size: 0;
+			flex-basis: 0;
+			-webkit-box-flex: 1;
+			-ms-flex-positive: 1;
+			flex-grow: 1;
+			margin: .5rem;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+		}
+	}
+}
+.steps.is-animated {
+	.step-item {
+		&::before {
+			-webkit-transition: all 2s ease;
+			transition: all 2s ease;
+		}
+		.step-marker {
+			-webkit-transition: all 0s ease;
+			transition: all 0s ease;
+			-webkit-transition-delay: 1.5s;
+			transition-delay: 1.5s;
+		}
+	}
+}
+.steps.is-small {
+	font-size: .75rem;
+	min-height: 1.5rem;
+	.step-item {
+		&:not(:first-child) {
+			&::before {
+				height: .2em;
+				width: 100%;
+				bottom: 0;
+				left: -50%;
+				top: .75rem;
+			}
+		}
+		.step-marker {
+			height: 1.5rem;
+			width: 1.5rem;
+			position: absolute;
+			left: calc(50% - .75rem);
+			.icon {
+				* {
+					font-size: .75rem;
+				}
+			}
+		}
+		.step-details {
+			margin-top: 1.5rem;
+			margin-left: .5em;
+			margin-right: .5em;
+			padding-top: .2em;
+			.step-title {
+				font-size: .9rem;
+				font-weight: 600;
+			}
+		}
+	}
+}
+.steps.is-medium {
+	font-size: 1.25rem;
+	min-height: 2.5rem;
+	.step-item {
+		&:not(:first-child) {
+			&::before {
+				height: .2em;
+				width: 100%;
+				bottom: 0;
+				left: -50%;
+				top: 1.25rem;
+			}
+		}
+		.step-marker {
+			height: 2.5rem;
+			width: 2.5rem;
+			position: absolute;
+			left: calc(50% - 1.25rem);
+			.icon {
+				* {
+					font-size: 1.25rem;
+				}
+			}
+		}
+		.step-details {
+			margin-top: 2.5rem;
+			margin-left: .5em;
+			margin-right: .5em;
+			padding-top: .2em;
+			.step-title {
+				font-size: 1.5rem;
+				font-weight: 600;
+			}
+		}
+	}
+}
+.steps.is-large {
+	font-size: 1.5rem;
+	min-height: 3rem;
+	.step-item {
+		&:not(:first-child) {
+			&::before {
+				height: .2em;
+				width: 100%;
+				bottom: 0;
+				left: -50%;
+				top: 1.5rem;
+			}
+		}
+		.step-marker {
+			height: 3rem;
+			width: 3rem;
+			position: absolute;
+			left: calc(50% - 1.5rem);
+			.icon {
+				* {
+					font-size: 1.5rem;
+				}
+			}
+		}
+		.step-details {
+			margin-top: 3rem;
+			margin-left: .5em;
+			margin-right: .5em;
+			padding-top: .2em;
+			.step-title {
+				font-size: 1.8rem;
+				font-weight: 600;
+			}
+		}
+	}
+}
+

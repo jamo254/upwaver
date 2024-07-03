@@ -5,24 +5,30 @@
     <title>Upwaver</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
-      <%= csp_meta_tag %>
+    <%= csp_meta_tag %>
 
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-        
-      <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-      <%= javascript_include_tag "application" , "data-turbo-track": "reload" , type: "module" %>
-       
+    <%= stylesheet_link_tag "actiontext", "data-turbo-track"=> "reload" %>\
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <%= stylesheet_link_tag "bulma-steps", "data-turbo-track"=> "reload" %>
+    
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "trix", "data-turbo-track": "reload", defer: true %>
+    <%= javascript_include_tag "application" , "data-turbo-track": "reload" , type: "module" %>
+      
 
     <% if content_for?(:head) %>
       <%= yield(:head) %>
    <% end %>
    </head>
 
-  <style>
-    html {
-      background-color: rgba(240, 248, 255, 0.464) !important;
-    }
-  </style>
+   <style>
+     button {
+       margin-top: 23px;
+       color: red !important;
+     }
+   </style>
 
   <body>
         <%= render "shared/navbar" %>
